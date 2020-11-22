@@ -74,6 +74,31 @@ app.delete('/', (req, res) => {
   messages = messages.filter((m) => m.id !== req.body.messageId);
   res.send({ok: true});
 });
+app.get('/report/',(req,res) => {
+  const user = findUser(req.body.auth || {});
 
+  if (!user) {
+    res.status(403).send({ok: false, error: 'Access denied'});
+    return;
+  }
+
+  if (!user.reportId) {
+    res.status(404).send({ok: false, error: 'Not found'});
+    return;
+  }
+
+ res.status(200).send("report: " +  fs.readFileSync("/home/app/prototype-pollution-explained/reports/"+user.reportId, 'utf8'));
+
+});
+
+app.get('/user', (req, res) => {
+     const user = findUser(req.body.auth || {});
+  res.send(user);
+});
+
+app.get('/user_proto', (req, res) => {
+     const user = findUser(req.body.auth || {});
+  res.send(user.__proto__);
+});
 app.listen(3000);
 console.log('Listening on port 3000...');
